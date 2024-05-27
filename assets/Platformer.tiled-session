@@ -1,0 +1,48 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "#tilemap_packed": {
+            "scaleInEditor": 1
+        },
+        "level.tmx": {
+            "scale": 1.7549,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 676.3918171975611,
+                "y": 263.26286398085364
+            }
+        },
+        "level.tmx#tilemap_packed": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/amphy/OneDrive/Documents/GitHub/Platformer/assets",
+    "last.imagePath": "C:/Users/amphy/OneDrive/Documents/GitHub/Platformer/assets",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 18,
+    "map.tileWidth": 18,
+    "map.width": 90,
+    "openFiles": [
+    ],
+    "project": "Platformer.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "level.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 18,
+        "width": 18
+    }
+}
