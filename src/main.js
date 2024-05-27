@@ -23,10 +23,11 @@ let config = {
     }
 }
 
+var running = true;
 var coins = 0;
 var win = true;
 var cursors;
 const SCALE = 2.0;
-var my = {sprite: {}, text: {}};
+var my = {sprite: {}, text: {}, vfx: {}};
 
 const game = new Phaser.Game(config);

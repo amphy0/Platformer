@@ -76,6 +76,17 @@ class Platformer extends Phaser.Scene {
         // set up Phaser-provided cursor key input
         cursors = this.input.keyboard.createCursorKeys();
 
+        my.vfx.walking = this.add.particles(0, 0, "kenny-particles", {
+            frame: ['dirt_02.png', 'dirt_03.png'],
+            // TODO: Try: add random: true
+            scale: {start: 0.03, end: 2},
+            maxAliveParticles: 100,
+            lifespan: 2000,
+            gravityY: 400,
+            alpha: {start: 1, end: 0.1}, 
+        });
+
+        my.vfx.walking.stop();
         
         this.cameras.main.setBounds(0, 0, 1620, this.map.heightInPixels);
         this.cameras.main.startFollow(my.sprite.player, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])
@@ -87,21 +98,32 @@ class Platformer extends Phaser.Scene {
     update() {
         if(cursors.left.isDown) {
             my.sprite.player.body.setAccelerationX(-this.ACCELERATION);
-            
             my.sprite.player.resetFlip();
             my.sprite.player.anims.play('walk', true);
+            my.vfx.walking.startFollow(my.sprite.player, my.sprite.player.displayWidth/2-10, my.sprite.player.displayHeight/2-5, false);
+            my.vfx.walking.setParticleSpeed(this.PARTICLE_VELOCITY, 0);
+            if (my.sprite.player.body.blocked.down) {
+                my.vfx.walking.start();
+            }
 
         } else if(cursors.right.isDown) {
             my.sprite.player.body.setAccelerationX(this.ACCELERATION);
 
             my.sprite.player.setFlip(true, false);
             my.sprite.player.anims.play('walk', true);
+            my.vfx.walking.startFollow(my.sprite.player, my.sprite.player.displayWidth/2-10, my.sprite.player.displayHeight/2-5, false);
+            my.vfx.walking.setParticleSpeed(this.PARTICLE_VELOCITY, 0);
+            if (my.sprite.player.body.blocked.down) {
+                my.vfx.walking.start();
+            }
 
         } else {
             my.sprite.player.body.setAccelerationX(0);
             my.sprite.player.body.setDragX(this.DRAG);
 
             my.sprite.player.anims.play('idle');
+            
+            my.vfx.walking.stop();
         }
 
         // player jump
@@ -111,7 +133,7 @@ class Platformer extends Phaser.Scene {
         }
         if(my.sprite.player.body.blocked.down && Phaser.Input.Keyboard.JustDown(cursors.up)) {
             my.sprite.player.body.setVelocityY(this.JUMP_VELOCITY);
-
+            this.sound.play('jump');
         }
     }
 }

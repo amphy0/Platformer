@@ -4,10 +4,12 @@ class Load extends Phaser.Scene {
     }
 
     preload() {
-        this.load.setPath("./assets/backgrounds/")
+        this.load.setPath("./assets/");
         this.load.image('sky', 'sky.png');
         this.load.image('rocks', 'rocks.png');
-        this.load.setPath("./assets/");
+
+        this.load.audio('run', 'footstep_concrete_003.ogg');
+        this.load.audio('jump', 'impactBell_heavy_003.ogg');
 
         // Load characters spritesheet
         this.load.atlas("platformer_characters", "tilemap-characters-packed.png", "tilemap-characters-packed.json");
@@ -21,6 +23,8 @@ class Load extends Phaser.Scene {
             frameWidth: 18,
             frameHeight: 18
         });
+        
+        this.load.multiatlas("kenny-particles", "kenny-particles.json");
     }
 
     create() {
